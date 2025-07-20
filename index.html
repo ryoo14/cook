@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>晩御飯提案アプリ</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🍽️ 今日の晩御飯</h1>
+            <p>何を作るか迷った時のお助けアプリ</p>
+        </header>
+
+        <div class="filter-section">
+            <div class="filter-group">
+                <label for="cuisine-filter">ジャンル：</label>
+                <select id="cuisine-filter">
+                    <option value="all">すべて</option>
+                    <option value="japanese">和食</option>
+                    <option value="western">洋食</option>
+                    <option value="chinese">中華</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="suggestion-section">
+            <div id="recipe-card" class="recipe-card" style="display: none;">
+                <h2 id="recipe-name"></h2>
+                <p id="recipe-description"></p>
+                <div class="recipe-actions">
+                    <a id="recipe-link" href="#" target="_blank" class="recipe-link">レシピを見る（参考）</a>
+                    <p class="recipe-note">※レシピは参考程度にご利用ください</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <button id="suggest-btn" class="btn-primary">提案してもらう</button>
+            <button id="decide-btn" class="btn-secondary" style="display: none;">これに決めた！</button>
+        </div>
+
+        <div class="history-section">
+            <h3>決めた料理の履歴</h3>
+            <div id="history-list" class="history-list">
+                <p class="no-history">まだ履歴がありません</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
