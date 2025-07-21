@@ -27,20 +27,35 @@ class DinnerSuggestionApp {
     setupEventListeners() {
         const suggestBtn = document.getElementById('suggest-btn');
         const decideBtn = document.getElementById('decide-btn');
-        const cuisineFilter = document.getElementById('cuisine-filter');
+        const cuisineCheckboxes = document.querySelectorAll('.cuisine-checkbox');
+        const ingredientCheckboxes = document.querySelectorAll('.ingredient-checkbox');
 
         suggestBtn.addEventListener('click', () => this.suggestRecipe());
         decideBtn.addEventListener('click', () => this.decideRecipe());
         
-        cuisineFilter.addEventListener('change', () => this.clearSuggestion());
+        cuisineCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', () => this.clearSuggestion());
+        });
+        
+        ingredientCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', () => this.clearSuggestion());
+        });
     }
 
     getFilteredRecipes() {
-        const cuisineFilter = document.getElementById('cuisine-filter').value;
+        const selectedCuisines = Array.from(document.querySelectorAll('.cuisine-checkbox:checked')).map(cb => cb.value);
+        const selectedIngredients = Array.from(document.querySelectorAll('.ingredient-checkbox:checked')).map(cb => cb.value);
 
         return this.recipes.filter(recipe => {
-            const cuisineMatch = cuisineFilter === 'all' || recipe.cuisine === cuisineFilter;
-            return cuisineMatch;
+            // ジャンルフィルター：何もチェックされていないか、チェックされたジャンルに含まれる
+            const cuisineMatch = selectedCuisines.length === 0 || selectedCuisines.includes(recipe.cuisine);
+            
+            // 材料フィルター：何もチェックされていないか、チェックされた材料のどれかを含む
+            const ingredientMatch = selectedIngredients.length === 0 || 
+                (recipe.ingredients && selectedIngredients.some(ingredient => 
+                    recipe.ingredients.includes(ingredient)));
+            
+            return cuisineMatch && ingredientMatch;
         });
     }
 
@@ -160,6 +175,7 @@ class DinnerSuggestionApp {
     showSuccess(message) {
         this.showMessage(message, 'success');
     }
+
 
     showMessage(message, type) {
         // 既存のメッセージを削除

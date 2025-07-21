@@ -9,7 +9,7 @@ body {
     font-family: 'Hiragino Sans', 'ヒラギノ角ゴシック', 'Yu Gothic', 'メイリオ', 'Meiryo', sans-serif;
     line-height: 1.6;
     color: #333;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #fd8850 0%, #ff6b35 100%);
     min-height: 100vh;
     position: relative;
 }
@@ -46,7 +46,7 @@ header {
 
 header h1 {
     font-size: 2.5rem;
-    background: linear-gradient(45deg, #667eea, #764ba2);
+    background: linear-gradient(45deg, #fd8850, #ff6b35);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -78,26 +78,41 @@ header p {
     min-width: 200px;
 }
 
-.filter-group label {
+.filter-group > label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 12px;
     font-weight: bold;
     color: #555;
+    font-size: 1.1rem;
 }
 
-.filter-group select {
-    width: 100%;
-    padding: 10px;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    font-size: 1rem;
-    background: white;
-    transition: border-color 0.3s;
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
 }
 
-.filter-group select:focus {
-    outline: none;
-    border-color: #e74c3c;
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    font-weight: normal;
+    color: #666;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.checkbox-group label:hover {
+    color: #fd8850;
+}
+
+.checkbox-group input[type="checkbox"] {
+    margin-right: 6px;
+    width: 16px;
+    height: 16px;
+    accent-color: #fd8850;
+    cursor: pointer;
 }
 
 /* 提案セクション */
@@ -128,7 +143,7 @@ header p {
 
 .recipe-card h2 {
     font-size: 2rem;
-    background: linear-gradient(45deg, #667eea, #764ba2);
+    background: linear-gradient(45deg, #fd8850, #ff6b35);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -184,15 +199,15 @@ header p {
 }
 
 .btn-primary {
-    background: linear-gradient(45deg, #667eea, #764ba2);
+    background: linear-gradient(45deg, #fd8850, #ff6b35);
     color: white;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 4px 15px rgba(253, 136, 80, 0.3);
 }
 
 .btn-primary:hover {
-    background: linear-gradient(45deg, #5a6fd8, #6a4190);
+    background: linear-gradient(45deg, #e67739, #e65c2e);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 6px 20px rgba(253, 136, 80, 0.4);
 }
 
 .btn-secondary {
@@ -269,6 +284,11 @@ header p {
     .filter-section {
         flex-direction: column;
         gap: 15px;
+    }
+    
+    .checkbox-group {
+        flex-direction: column;
+        gap: 8px;
     }
     
     .action-buttons {

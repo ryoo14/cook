@@ -15,13 +15,22 @@
 
         <div class="filter-section">
             <div class="filter-group">
-                <label for="cuisine-filter">ジャンル：</label>
-                <select id="cuisine-filter">
-                    <option value="all">すべて</option>
-                    <option value="japanese">和食</option>
-                    <option value="western">洋食</option>
-                    <option value="chinese">中華</option>
-                </select>
+                <label>ジャンル：</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" value="japanese" class="cuisine-checkbox"> 和食</label>
+                    <label><input type="checkbox" value="western" class="cuisine-checkbox"> 洋食</label>
+                    <label><input type="checkbox" value="chinese" class="cuisine-checkbox"> 中華</label>
+                </div>
+            </div>
+            <div class="filter-group">
+                <label>材料：</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" value="牛肉" class="ingredient-checkbox"> 牛肉</label>
+                    <label><input type="checkbox" value="豚肉" class="ingredient-checkbox"> 豚肉</label>
+                    <label><input type="checkbox" value="鶏肉" class="ingredient-checkbox"> 鶏肉</label>
+                    <label><input type="checkbox" value="魚" class="ingredient-checkbox"> 魚</label>
+                    <label><input type="checkbox" value="卵" class="ingredient-checkbox"> 卵</label>
+                </div>
             </div>
         </div>
 
